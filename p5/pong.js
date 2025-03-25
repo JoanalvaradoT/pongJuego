@@ -15,14 +15,12 @@ function draw() {
     background(0);
     drawCenterLine();
     
-    // Mostrar puntuación
     fill(255);
     textSize(32);
     textAlign(CENTER, TOP);
     text(leftScore, width / 4, 20);
     text(rightScore, (3 * width) / 4, 20);
 
-    // Movimiento y dibujo de objetos
     ball.update();
     ball.checkCollision(leftPaddle, rightPaddle);
     ball.show();
@@ -32,7 +30,6 @@ function draw() {
     leftPaddle.show();
     rightPaddle.show();
     
-    // Verificar si alguien gana
     if (leftScore >= winningScore || rightScore >= winningScore) {
         textSize(50);
         text("¡Juego Terminado!", width / 2, height / 2);
@@ -85,12 +82,12 @@ class Ball {
     checkCollision(leftPaddle, rightPaddle) {
         if (this.x - this.size / 2 < leftPaddle.x + leftPaddle.w &&
             this.y > leftPaddle.y && this.y < leftPaddle.y + leftPaddle.h) {
-            this.xSpeed *= -1.1; // Rebote y aumento de velocidad
+            this.xSpeed *= -1.1; 
         }
 
         if (this.x + this.size / 2 > rightPaddle.x &&
             this.y > rightPaddle.y && this.y < rightPaddle.y + rightPaddle.h) {
-            this.xSpeed *= -1.1; // Rebote y aumento de velocidad
+            this.xSpeed *= -1.1; 
         }
     }
 
